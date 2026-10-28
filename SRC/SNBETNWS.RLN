@@ -1,0 +1,26 @@
+Better Newsgroups for The Major BBS v10
+Copyright (C) 2026 Sysop Network.  Released under the MIT License.
+
+A two-way gateway between Usenet newsgroups and the BBS forums.
+
+SETTING UP
+  1. Create a forum for each newsgroup, with the usual forum tools.
+  2. Add Better Newsgroups to the menu (Sysop only) and enter it.
+  3. Settings 2-7: the news server, port, security and login your
+     news provider gave you.
+  4. G: link each newsgroup to its forum.  Import copies articles into
+     the forum; Export posts what users write in the forum.
+  5. Setting 1 to YES, then C to check right away.
+
+All settings are changed online and apply at once; there are no CNF
+options.  The Audit Trail records problems (and, if asked, activity).
+
+FILES
+  SNBETNWS.DLL/.MDF/.MSG   the module
+  SNBETNWS.DAT             settings and newsgroup links (created)
+  SNBETMID.DAT             Message-ID cross-reference (created)
+  SNBETNWS\IN, \OUT        articles waiting to be imported / posted
+  SNBETNWS.LOG             optional server transcript (setting 24)
+
+Better Newsgroups for The Major BBS v10 by Mark Laudenbach -
+https://github.com/laudenbachm

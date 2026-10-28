@@ -1,0 +1,27 @@
+; SNBETNWS.MDF - Better Newsgroups
+
+Module Name: Better Newsgroups
+
+Developer: Sysop Network
+
+Requires:
+Replaces:
+
+Install:
+
+Online user manual: SNBETNWS.RLN
+
+DLLs: SNBETNWS
+MSGs: SNBETNWS
+
+Btrieve page size: 2048
+Btrieve files:     2
+
+Cleanup:
+
+Event-1:
+Event-2:
+Event-3:
+Event-4:
+
+Add-On Utility:

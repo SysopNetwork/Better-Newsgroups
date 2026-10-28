@@ -1,0 +1,16 @@
+; BNFETCH.INI - settings for the BNFETCH test tool.
+; Copy this file to BNFETCH.INI (which is never committed) and fill it in.
+; TOOLS\BUILDTOOLS.CMD copies it next to BUILD\TOOLS\BNFETCH.EXE.
+; The password can also be given in the BNFETCH_PASS environment variable.
+
+host=YOUR_NEWS_SERVER
+port=119
+; security = none, starttls or tls (tls is usually port 563)
+security=none
+verify=yes
+user=YOUR_USERNAME
+pass=YOUR_PASSWORD
+; From address used by "BNFETCH build" and "BNFETCH post"
+from=YOUR_ADDRESS
+; one line per newsgroup
+group=alt.test

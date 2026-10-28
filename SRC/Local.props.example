@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Local.props - your own path to the MBBS v10 SDK.
+    Copy this file to Local.props and set MBBS10SDK.  Local.props is in
+    .gitignore so each developer keeps their own path.
+    The trailing backslash on the path is required.
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MBBS10SDK>C:\Path\To\MBBS 10 SDK\</MBBS10SDK>
+  </PropertyGroup>
+</Project>

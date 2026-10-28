@@ -1,0 +1,62 @@
+# Visual Studio build output
+BUILD/
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.idb
+*.iobj
+*.ipdb
+*.tlog
+*.lastbuildstate
+
+# Visual Studio IDE files
+.vs/
+*.user
+*.suo
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.cache
+*.VC.db
+*.VC.opendb
+
+# Local developer configuration (local filesystem paths - never commit)
+SRC/Local.props
+TESTS/Local.props
+TOOLS/Local.props
+
+# Local test credentials and private test data (never commit)
+*.LOCAL.INI
+*.local.ini
+TOOLS/*.INI
+!TOOLS/*.INI.EXAMPLE
+TESTS/OUTPUT/
+
+# Internal project files (not for public repositories)
+MEMORY.MD
+PROJECT_STATUS.MD
+DOCS/
+Notes/
+NOTES/
+SCRATCH/
+PRIVATE/
+INTERNAL/
+
+# Editor / tooling local configuration
+.vscode/
+
+# Temporary and OS files
+Thumbs.db
+Desktop.ini
+*.tmp
+*.bak
+*~
+
+# Release archives (attached to GitHub releases, never committed)
+/DIST/*.zip
+
+# Windows shortcuts
+*.lnk

@@ -1,0 +1,6 @@
+; SNBETNWS_EXP.DEF - exports for SNBETNWS.DLL
+; Better Newsgroups - Copyright (C) 2026 Sysop Network
+; The BBS finds the module by looking up _init__snbetnws.
+LIBRARY SNBETNWS.DLL
+EXPORTS
+    _init__snbetnws=init__snbetnws    @1

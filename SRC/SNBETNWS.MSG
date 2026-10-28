@@ -1,0 +1,454 @@
+
+
+LEVEL6 {Better Newsgroups}
+
+
+SYSONLY {[1;31mThis area is for the Sysop only.[0m
+} T Shown to users without the SYSOP key
+
+
+MAINHDR {[0m
+[1;37mBetter Newsgroups [0;36mvN!SNBN_VERSION[0m - Gateway Settings
+[1;30m------------------------------------------------------------------[0m
+Status:  [1;33mN!SNBN_STATUS[0m
+Waiting: N!SNBN_WAIT
+[1;36mPage N!SNBN_PAGE[0m
+
+} T Settings screen header
+
+
+SETROW { [1;36mN!SNBN_ROWNUM[0m. L<SNBN_ROWNAME [1;37mN!SNBN_ROWVAL[0m
+} T One settings row
+
+
+MAINFTR {[1;30m------------------------------------------------------------------[0m
+ [1;36mN[0m. Other page  [1;36mG[0m. Newsgroups  [1;36mC[0m. Check now  [1;36mQ[0m. Posts  [1;36mH[0m. Help  [1;36mX[0m. Exit
+} T Settings screen commands
+
+
+ASKVAL {
+[1;37mN!SNBN_ROWNAME[0m is now: [1;33mN!SNBN_ROWVAL[0m
+Allowed: N!SNBN_HINT
+New value (blank = no change, ? = help): } T Prompt for a new setting value
+
+
+SAVED {[1;32mN!SNBN_ROWNAME saved.[0m
+} T Setting saved
+
+
+BADVAL {[1;31mNot accepted.[0m Allowed: N!SNBN_HINT
+} T Setting value rejected
+
+
+BADSEL {[1;31mUnknown choice.[0m Enter ? to see the screen again.
+} T Unknown menu choice
+
+
+LEAVE {
+Leaving Better Newsgroups.
+} T Leaving the module
+
+
+PROMPT {
+Enter a setting number to change it, or a letter: } T Settings menu prompt
+
+
+CHOICES {
+[1;37mN!SNBN_ROWNAME[0m is now: [1;33mN!SNBN_ROWVAL[0m
+} T A list setting: its current value
+
+
+CHOICEP {Choose 1-N!SNBN_CHNUM or type the name (blank = no change, ? = help): } T A list setting: the prompt
+
+
+CHROW {  [1;36mN!SNBN_CHNUM[0m. L)SNBN_CHNAME N!SNBN_CHDESC
+} T One choice in a list setting
+
+
+GRPHDR {[0m
+[1;37mBetter Newsgroups [0;36mvN!SNBN_VERSION[0m - Linked Newsgroups
+[1;30m------------------------------------------------------------------[0m
+Status:  [1;33mN!SNBN_STATUS[0m
+
+[1;30m  #  Newsgroup                    Forum           Imp Exp State[0m
+} T Newsgroup list header
+
+
+GRPROW { [1;36mN!SNBN_GNUM[0m. L<SNBN_GNAME L/SNBN_GFORUM L#SNBN_GIMP L#SNBN_GEXP N!SNBN_GSTAT
+} T One newsgroup in the list
+
+
+GRPNONE {  (No newsgroups are linked yet.  Press A to add one.)
+} T No newsgroups linked yet
+
+
+GRPFTR {[1;30m------------------------------------------------------------------[0m
+ [1;36mA[0m. Add  [1;36m1-99[0m. Change one  [1;36mN[0m. More  [1;36mH[0m. Help  [1;36mX[0m. Back
+Enter a newsgroup number or a letter: } T Newsgroup list commands and prompt
+
+
+GASKNAME {
+Name of the newsgroup to link (e.g. alt.bbs.misc; blank = cancel): } T Add a newsgroup: its name
+
+
+GASKFOR {
+Forum for [1;37mN!SNBN_GNAME[0m (a forum name; blank = cancel): } T Add a newsgroup: its forum
+
+
+GADDED {[1;32mN!SNBN_GNAME is linked to forum N!SNBN_GFORUM.[0m
+Import and export are on; the first check reads its newest articles.
+} T Newsgroup added
+
+
+GBAD {[1;31mNot accepted:[0m N!SNBN_HINT
+} T Newsgroup change refused
+
+
+GEDHDR {[0m
+[1;37mNewsgroup N!SNBN_GNAME[0m
+[1;30m------------------------------------------------------------------[0m
+Status: [1;33mN!SNBN_STATUS[0m
+
+} T One newsgroup's settings: header
+
+
+GEDFTR {[1;30m------------------------------------------------------------------[0m
+ [1;36mD[0m. Remove this link  [1;36mH[0m. Help  [1;36mX[0m. Back to the list
+Enter a setting number or a letter: } T One newsgroup's settings: commands
+
+
+GDELASK {
+Remove the link to [1;37mN!SNBN_GNAME[0m?  The forum and its messages
+are kept.  Remove it (Y/N)? } T Confirm removing a newsgroup link
+
+
+GDELETED {[1;32mN!SNBN_GNAME is no longer linked.[0m
+} T Newsgroup link removed
+
+
+CHECKOK {[1;32mChecking the news server now.[0m  The status line and the Audit
+Trail show the result.
+} T Check started
+
+
+CHECKBAD {[1;31mCannot check now:[0m N!SNBN_HINT
+} T Check could not be started
+
+
+QHDR {
+[1;37mPosts waiting to go out[0m - N!SNBN_WAIT
+[1;30mNewsgroup            Subject              Age     Tries  Last result[0m
+} T Outgoing posts list header
+
+
+QROW {L4SNBN_QGRP L4SNBN_QSUBJ L'SNBN_QAGE L&SNBN_QTRIES N!SNBN_QERR
+} T One outgoing post
+
+
+QEMPTY {Nothing is waiting to be posted.
+} T Nothing waiting to be posted
+
+
+QMORE {...and N!SNBN_STATUS.
+} T After a long list of posts
+
+
+HELPMENU {
+[1;37mQuick start[0m
+ 1. Set 2 (news server) and 3 (port); 6 and 7 if the server wants a
+    login.  Port 119 is plain NNTP; for TLS use 563 and set 4 to TLS.
+ 2. Press G and link each newsgroup to a forum.  Create the forum
+    first, with the usual forum tools.
+ 3. Set 1 to YES.  Press C to check right away; the status line and
+    the Audit Trail show how it went.
+
+ Messages users write in a linked forum are posted to the newsgroup,
+ and the newsgroup's articles appear in the forum.  Type a setting's
+ number to change it; ? at any prompt explains it, and H with a
+ number (e.g. H 12) explains a setting from here.
+} T Quick-start help
+
+
+HELPGRP {
+[1;37mNewsgroup links[0m
+ Each link joins one newsgroup to one forum.  Import copies the
+ group's articles into the forum; Export posts what users write in
+ the forum to the group.  Several newsgroups may share one forum:
+ export then posts to all of them at once, as one cross-posted article.
+ The State column shows "new" until the first check, then the number
+ of the next article to read, or PROBLEM: open the link to see why.
+} T Help on the newsgroup screens
+
+
+SNDLINE {From: N!SNBN_FROM
+Date: N!SNBN_DATE
+
+} T Sender lines atop an article (plain text, no ANSI)
+
+
+PARTLINE {(part N!SNBN_PART of N!SNBN_NPARTS)
+
+} T Atop each part of a long article (plain text)
+
+
+OVERSZ {(This article was N!SNBN_SIZE KB, larger than the N!SNBN_LIMIT KB this BBS
+imports.  Read it with a newsreader if you need the full text.)
+} T Text of a too-large article (plain text)
+
+
+ATTNOTE {
+(This article had N!SNBN_NATT attached file(s), which were not imported.)
+} T Note about attachments (plain text)
+
+
+TAGLINE {Posted from N!SNBN_BBS
+} T Signature on outgoing posts (plain text; blank = none)
+
+
+REJECT {Your forum message is in the forum, but it could not be sent to the
+newsgroup N!SNBN_RJGRP.
+
+Subject: N!SNBN_RJSUBJ
+
+Reason:
+    N!SNBN_RJWHY
+} T Notice to a user whose post failed (plain text)
+
+
+HENABLE {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ YES turns the gateway on: newsgroups are read on schedule and forum
+ messages are posted.  NO stops both.  Forum messages written while it
+ is off are not posted later.
+ Allowed: N!SNBN_HINT
+} T Help: Gateway enabled
+
+
+HHOST {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ The news (NNTP) server to read from and post to, as your news
+ provider gives it, e.g. news.example.com.
+ Allowed: N!SNBN_HINT
+} T Help: News server
+
+
+HPORT {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ 119 is the usual port for plain NNTP and for STARTTLS; 563 is the
+ usual port for NNTP over TLS.
+ Allowed: N!SNBN_HINT
+} T Help: News server port
+
+
+HSEC {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ NONE sends everything, your login included, unencrypted.  STARTTLS
+ connects on the plain port and then encrypts; TLS is encrypted from
+ the start.  Use TLS or STARTTLS when your server offers them.
+ Allowed: N!SNBN_HINT
+} T Help: Connection security
+
+
+HVERIFY {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ YES checks that the server's certificate is valid and matches its
+ name.  Set NO only for a server with a self-signed certificate.
+ Allowed: N!SNBN_HINT
+} T Help: Verify TLS certificate
+
+
+HUSER {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ The login your news provider gave you.  Enter - if it needs none.
+ Allowed: N!SNBN_HINT
+} T Help: Login name
+
+
+HPASS {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ Never shown once set.  Enter - to clear it.
+ Allowed: N!SNBN_HINT
+} T Help: Password
+
+
+HPOLL {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ How often new articles are fetched.  Forum messages are posted
+ within a few seconds, whatever this is set to.
+ Allowed: N!SNBN_HINT
+} T Help: Check every
+
+
+HTMOUT {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ How long to wait for the server at each step before giving up on
+ this check.  The next check tries again.
+ Allowed: N!SNBN_HINT
+} T Help: Timeout
+
+
+HBACK {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ When a newsgroup is linked, or its next article number is set to 0,
+ this many of its newest articles are read first.  ALL reads every
+ article the server still has.  0 starts with the articles posted from
+ then on.  A large backlog is read a few hundred articles per check
+ (see Most articles per check), so it can take many checks.
+ Imported messages keep their original dates: if the forum deletes
+ messages after a number of days, older articles go at the next cleanup.
+ Allowed: N!SNBN_HINT
+} T Help: Articles for a new group
+
+
+HMAXPER {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ The most articles read from one newsgroup per check; the rest are
+ read at the next checks.
+ Allowed: N!SNBN_HINT
+} T Help: Most articles per check
+
+
+HMAXKB {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ A larger article is imported as a short notice with its sender and
+ subject, but without its text.
+ Allowed: N!SNBN_HINT
+} T Help: Largest article
+
+
+HFNAME {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ The name shown next to the address in posts.  The address is the
+ user's own BBS Internet mail address.
+ Allowed: N!SNBN_HINT
+} T Help: From name
+
+
+HDOMAIN {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ The host name in the Message-ID of each post.  Leave it blank to use
+ the BBS mail host name; set it when that is not a real domain name.
+ Allowed: N!SNBN_HINT
+} T Help: Message-ID host name
+
+
+HORG {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ An Organization line for posts, e.g. the BBS name and its town.
+ Allowed: N!SNBN_HINT
+} T Help: Organization
+
+
+HPOSTKEY {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ Only users holding this key have their forum messages posted to
+ Usenet; other users' messages stay in the forum only.  Blank lets
+ everyone who can write in the forum post.
+ Allowed: N!SNBN_HINT
+} T Help: Key needed to post
+
+
+HRETRY {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ How long to wait before trying a post again when the server could
+ not take it.
+ Allowed: N!SNBN_HINT
+} T Help: Retry interval
+
+
+HGIVEUP {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ A post that still cannot be sent after this long is dropped, and its
+ author gets a note in BBS e-mail.  The forum keeps the message.
+ Allowed: N!SNBN_HINT
+} T Help: Give up after
+
+
+HSHOWHDR {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ YES puts the sender's name and address, and the date, at the top of
+ each imported article.
+ Allowed: N!SNBN_HINT
+} T Help: Sender line in messages
+
+
+HWRAP {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ Imported text is word-wrapped at this column.  0 leaves the lines as
+ they were sent.
+ Allowed: N!SNBN_HINT
+} T Help: Word-wrap column
+
+
+HKEEP {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ How long the BBS remembers which forum message is which Usenet
+ article.  Within this time, articles are never imported twice and
+ replies are threaded; replies to older articles start a new thread.
+ Allowed: N!SNBN_HINT
+} T Help: Keep Message-IDs
+
+
+HAUDOK {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ YES records each check that found articles, and each post sent, in
+ the Audit Trail.
+ Allowed: N!SNBN_HINT
+} T Help: Audit normal activity
+
+
+HAUDBAD {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ YES records connection, login and posting problems in the Audit
+ Trail.
+ Allowed: N!SNBN_HINT
+} T Help: Audit errors
+
+
+HTRANS {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ YES writes the whole conversation with the server (never passwords)
+ to SNBETNWS.LOG in the BBS directory.  For troubleshooting only: it
+ grows quickly.
+ Allowed: N!SNBN_HINT
+} T Help: Transcript log file
+
+
+HGNAME {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ The newsgroup's name, exactly as the news server lists it.
+ Allowed: N!SNBN_HINT
+} T Help: Newsgroup
+
+
+HGFORUM {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ The forum that holds the newsgroup's articles.  The forum's own
+ access settings decide who can read it and who can write in it.
+ Allowed: N!SNBN_HINT
+} T Help: Forum
+
+
+HGIMP {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ YES copies new articles from the newsgroup into the forum.
+ Allowed: N!SNBN_HINT
+} T Help: Import articles
+
+
+HGEXP {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ YES posts messages users write in the forum to the newsgroup.
+ Imported articles are never posted back.
+ Allowed: N!SNBN_HINT
+} T Help: Export messages
+
+
+HGNEXT {
+[1;37mN!SNBN_ROWNUM. N!SNBN_ROWNAME[0m
+ The number of the next article to read from the server.  0 starts
+ over with the newest articles (main screen setting 10); articles
+ already in the forum are not imported twice.
+ Allowed: N!SNBN_HINT
+} T Help: Next article number
+

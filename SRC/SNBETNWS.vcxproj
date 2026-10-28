@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Developer-local SDK path (Local.props is not committed; see Local.props.example) -->
+  <Import Project="Local.props" Condition="exists('Local.props')" />
+
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{23FB70CD-8DE3-43E0-AD03-7E58151560D2}</ProjectGuid>
+    <RootNamespace>SNBETNWS</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>SNBETNWS</ProjectName>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <PropertyGroup Label="UserMacros" />
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(ProjectDir)..\BUILD\Debug\</OutDir>
+    <IntDir>$(ProjectDir)..\BUILD\Debug\Intermediate\</IntDir>
+    <TargetName>SNBETNWS</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(ProjectDir)..\BUILD\Release\</OutDir>
+    <IntDir>$(ProjectDir)..\BUILD\Release\Intermediate\</IntDir>
+    <TargetName>SNBETNWS</TargetName>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;GCWINNT;GCMVC;BBSVER=1000;USE_DEF_FILE;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;__BUILDV10MODULE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)SHARED;$(MBBS10SDK)inc;$(MBBS10SDK)inc\msg\v10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <StructMemberAlignment>8Bytes</StructMemberAlignment>
+      <!-- /J: char is unsigned, required by the MBBS SDK -->
+      <AdditionalOptions>/J %(AdditionalOptions)</AdditionalOptions>
+      <!-- static runtime: no VCRUNTIME140.DLL needed on the BBS server -->
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(MBBS10SDK)lib\importlibs;$(MBBS10SDK)lib\v10;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>wgserver_lib.lib;galgsbl_lib.lib;galme_lib.lib;galsmtp_lib.lib;galalias_lib.lib;ws2_32.lib;secur32.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>SNBETNWS_EXP.DEF</ModuleDefinitionFile>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <GenerateMapFile>true</GenerateMapFile>
+      <!-- embed only the .pdb file name, never this machine's build path -->
+      <AdditionalOptions>/PDBALTPATH:%_PDB% %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copy the matching .MSG, .MDF and .RLN next to the DLL</Message>
+      <Command>copy /y "$(ProjectDir)SNBETNWS.MSG" "$(OutDir)" &gt;nul &amp;&amp; copy /y "$(ProjectDir)SNBETNWS.MDF" "$(OutDir)" &gt;nul &amp;&amp; copy /y "$(ProjectDir)SNBETNWS.RLN" "$(OutDir)" &gt;nul</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;GCWINNT;GCMVC;BBSVER=1000;USE_DEF_FILE;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;__BUILDV10MODULE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)SHARED;$(MBBS10SDK)inc;$(MBBS10SDK)inc\msg\v10;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <StructMemberAlignment>8Bytes</StructMemberAlignment>
+      <!-- /J: char is unsigned, required by the MBBS SDK -->
+      <AdditionalOptions>/J %(AdditionalOptions)</AdditionalOptions>
+      <!-- static runtime: no VCRUNTIME140.DLL needed on the BBS server -->
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(MBBS10SDK)lib\importlibs;$(MBBS10SDK)lib\v10;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>wgserver_lib.lib;galgsbl_lib.lib;galme_lib.lib;galsmtp_lib.lib;galalias_lib.lib;ws2_32.lib;secur32.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ModuleDefinitionFile>SNBETNWS_EXP.DEF</ModuleDefinitionFile>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <GenerateMapFile>true</GenerateMapFile>
+      <!-- embed only the .pdb file name, never this machine's build path -->
+      <AdditionalOptions>/PDBALTPATH:%_PDB% %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copy the matching .MSG, .MDF and .RLN next to the DLL</Message>
+      <Command>copy /y "$(ProjectDir)SNBETNWS.MSG" "$(OutDir)" &gt;nul &amp;&amp; copy /y "$(ProjectDir)SNBETNWS.MDF" "$(OutDir)" &gt;nul &amp;&amp; copy /y "$(ProjectDir)SNBETNWS.RLN" "$(OutDir)" &gt;nul</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <ClCompile Include="SNBETNWS.C" />
+    <ClCompile Include="BNWORK.C" />
+    <ClCompile Include="BNNNTP.C" />
+    <ClCompile Include="BNART.C" />
+    <ClCompile Include="BNSPOOL.C" />
+    <ClCompile Include="SHARED\SBNET.C" />
+    <ClCompile Include="SHARED\SBUTIL.C" />
+    <ClCompile Include="SHARED\SBMAIL.C" />
+    <ClCompile Include="SHARED\IEMSG.C" />
+    <ClCompile Include="SHARED\IETEXT.C" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SNBETNWS.H" />
+    <ClInclude Include="BNVER.H" />
+    <ClInclude Include="BNWORK.H" />
+    <ClInclude Include="BNNNTP.H" />
+    <ClInclude Include="BNART.H" />
+    <ClInclude Include="BNSPOOL.H" />
+    <ClInclude Include="SHARED\SBNET.H" />
+    <ClInclude Include="SHARED\SBUTIL.H" />
+    <ClInclude Include="SHARED\SBMAIL.H" />
+    <ClInclude Include="SHARED\IEMSG.H" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SNBETNWS.RC" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SNBETNWS.MSG" />
+    <None Include="SNBETNWS.MDF" />
+    <None Include="SNBETNWS_EXP.DEF" />
+    <None Include="SNBETNWS.RLN" />
+    <None Include="Local.props.example" />
+  </ItemGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
